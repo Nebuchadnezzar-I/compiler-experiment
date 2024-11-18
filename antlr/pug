@@ -1,0 +1,5 @@
+import data someComponent "./components"
+
+page = {
+    "Sample HTML for page one."
+}

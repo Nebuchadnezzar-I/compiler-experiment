@@ -1,0 +1,4 @@
+- [ ] clean up
+- [ ] add parser
+- [ ] add imports
+- [ ] print output
