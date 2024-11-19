@@ -1,8 +1,8 @@
 #ifndef FILE_TREE_H
 #define FILE_TREE_H
 
-#include <string>
 #include <memory>
+#include <string>
 #include <vector>
 
 namespace FileTree {
@@ -18,8 +18,9 @@ std::shared_ptr<Entry> walk(const std::string& directory, char level = 0);
 void printTree(const std::shared_ptr<Entry>& entry, int level = 0);
 
 // Getters
-std::shared_ptr<Entry> getIndexFile(const std::shared_ptr<Entry>& entry, std::string search_name);
+std::shared_ptr<Entry> getIndexFile(const std::shared_ptr<Entry>& entry,
+                                    std::string search_name);
 
-} // namespace FileTree
+}  // namespace FileTree
 
 #endif

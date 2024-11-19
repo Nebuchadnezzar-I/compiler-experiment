@@ -1,7 +1,9 @@
 #include <memory>
+
 #include "./FileTree.cpp"
 
-std::shared_ptr<FileTree::Entry> FileTree::getIndexFile(const std::shared_ptr<Entry>& root, std::string search_name) {
+std::shared_ptr<FileTree::Entry> FileTree::getIndexFile(
+    const std::shared_ptr<Entry>& root, std::string search_name) {
     if (!root) return nullptr;
 
     if (root->name == search_name) {

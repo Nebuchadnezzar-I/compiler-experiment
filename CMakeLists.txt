@@ -1,15 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
+project(CompilerExperiment)
 
-project(CompilerExperiment LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD 17)
 
-add_executable(CompilerExperiment
-    src/main.cpp
-    include/fileTree/Print.cpp
-    include/fileTree/Utils.cpp
-    include/fileTree/Walk.cpp
-    include/fileTree/FileTree.cpp
-)
+# Define paths for ANTLR runtime
+set(ANTLR_RUNTIME_INCLUDE_DIR /home/admiralcapo/antlr4/runtime/Cpp/runtime/src)
+set(ANTLR_RUNTIME_LIB_DIR /home/admiralcapo/antlr4/runtime/Cpp/dist)
 
-target_include_directories(CompilerExperiment PRIVATE include)
+# Include directories
+include_directories(include ${ANTLR_RUNTIME_INCLUDE_DIR})
+
+# Collect all source files in fileTree and antlr directories
+file(GLOB FILETREE_SOURCES "include/fileTree/*.cpp")
+file(GLOB ANTLR_SOURCES "include/antlr/*.cpp")
+
+# Add executable with all collected sources
+add_executable(CompilerExperiment src/main.cpp ${FILETREE_SOURCES} ${ANTLR_SOURCES})
+
+# Link with the ANTLR runtime library
+target_link_libraries(CompilerExperiment ${ANTLR_RUNTIME_LIB_DIR}/libantlr4-runtime.a)

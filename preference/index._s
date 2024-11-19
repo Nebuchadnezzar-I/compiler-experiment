@@ -1,0 +1,5 @@
+package main
+
+server = {
+    endpoint(_page) home()
+}
