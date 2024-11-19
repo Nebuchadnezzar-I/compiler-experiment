@@ -1,12 +1,15 @@
 #include <cstdlib>
-#include <filesystem>
-#include "fileTree/FileNode.h"
+#include <iostream>
+#include "../include/fileTree/FileTree.cpp"
 
 int main() {
-    const std::filesystem::path src_dir{"../lang"};
-    auto root = std::make_shared<fileTree::FileNode>("", "", fileTree::DIRECTORY);
-    root->buildDirFileTree(src_dir);
-    root->printFileAndDirs();
+    auto root = FileTree::walk("/home/admiralcapo/personal/lang");
+    // FileTree::printTree(root);
+    auto index_file = FileTree::getIndexFile(root, "index.ex");
+    if (index_file) {
+        std::cout << "File not found" << std::endl;
+        std::cout << index_file->file_content << std::endl;
+    }
 
     return EXIT_SUCCESS;
 }
